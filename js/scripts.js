@@ -18,12 +18,22 @@ let pokemonList = [
   } 
 ];
 
-
-for (let i = 0; i < pokemonList.length; i++) {
-    document.write(pokemonList[i].name + " (Height: " + pokemonList[i].height + ")");
- if (pokemonList[i].height > 1) {
-    document.write(" - wow, that's a big one!");
- }
- document.write("<br>");
+function displayPokemon(p) {
+  document.write(p.name + " (Height: " + p.height + ")");
+  if (p.height > 1) {
+    document.write(" - wow, that's a big one! ");
+  }
+  document.write("<br>");
 }
+
+pokemonList.forEach(displayPokemon);
+
+
+// for (let i = 0; i < pokemonList.length; i++) {
+//     document.write(pokemonList[i].name + " (Height: " + pokemonList[i].height + ")");
+//  if (pokemonList[i].height > 1) {
+//     document.write(" - wow, that's a big one!");
+//  }
+//  document.write("<br>");
+// }
 
