@@ -1,62 +1,29 @@
+const player = document.getElementById('player');
+const outline = document.getElementById('outline');
 
-let pokemonRepository = (function () {
-  let pokemonList = [
-    {
-      name: "Charmeleon",
-      height: 1.1,
-      abilities: ["Blaze", "Solar-Powered"]
-    },   
-    {
-      name: "Sandslash",
-      height: 1.0,
-      abilities: ["Sand-Veil", "Sand-Rush"]
-    },
-    {
-      name: "Primeape",
-      height: 1.0,
-      abilities: ["Vital-Spirit", "Anger-Point", "Defiant"]
-    } 
-  ]
-
-    function getAll () {
-      return pokemonList;
-    }
-    function add (pokemon) {
-      pokemonList.push(pokemon);
-    }
-
-    return {
-      getAll: getAll,
-      add: add
-    }
-
-  })()   
-
-
-function displayPokemon(pokemon) {
-  document.write(pokemon.name + " (Height: " + pokemon.height + ")");
-  if (pokemon.height > 1) {
-    document.write(" - wow, that's a big one! ");
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft'){
+    event.preventDefault(); 
+    const currentLeft = parseInt(player.style.left) || 20; 
+    const newLeft = currentLeft - 20; 
+    player.style.left = `${newLeft}px`; 
   }
-  document.write("<br>");
-}
-
-
-
-pokemonRepository.add({name: "Test", height: 1.5, abilities: ["Test", "Test2", "Test3"]});
-
-
-pokemonRepository.getAll().forEach(function(pokemon){
-  displayPokemon(pokemon);
+  else if (event.key === 'ArrowRight'){
+    event.preventDefault(); 
+    const currentLeft = parseInt(player.style.left) || 20; 
+    const newLeft = currentLeft + 20;
+    player.style.left = `${newLeft}px`;
+  }
+  else if (event.key === 'ArrowDown'){
+    event.preventDefault();
+    const currentTop = parseInt(player.style.top) || 150;
+    const newTop = currentTop + 20;
+    player.style.top = `${newTop}px`;
+  }
+  else if (event.key === 'ArrowUp'){
+    event.preventDefault();
+    const currentTop = parseInt(player.style.top) || 150;
+    const newTop = currentTop - 20;
+    player.style.top = `${newTop}px`;
+  }
 });
-
-
-
-// for (let i = 0; i < pokemonList.length; i++) {
-//     document.write(pokemonList[i].name + " (Height: " + pokemonList[i].height + ")");
-//  if (pokemonList[i].height > 1) {
-//     document.write(" - wow, that's a big one!");
-//  }
-//  document.write("<br>");
-// }
-
